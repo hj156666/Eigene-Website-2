@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mein Shop</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            margin-top: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .product h2 {
+            margin-top: 0;
+        }
+        
+        .product button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        
+        .product button:hover {
+            background-color: #555;
+        }
+        
+        #cart {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        #cart h2 {
+            margin-top: 0;
+        }
+        
+        #cart ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        #cart li {
+            margin-bottom: 10px;
+        }
+        
+        #cart button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        
+        #cart button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Essen.de</h1>
+    </header>
+    
+    <div class="container">
+        <div class="product">
+            <img src="Pizza.jpg" height="100" width="100">.
+            <h2>Piza Magharita </h2>
+            <p>Käse, Tomatensoße </p>
+            <button onclick="addToCart('Produkt 1')">In den Warenkorb</button>
+        </div>
+        
+        <div class="product">
+            <img src="pommes-frites-mit-currywurst.jpg" height="100" width="100">.
+            <h2>Curywurst</h2>
+            <p>Curywurst/ Pommes</p>
+            <button onclick="addToCart('Produkt 2')">In den Warenkorb</button>
+        </div>
+        
+        <div class="product">
+            <img src="Doener-1024x731.jpg" height="100" width="100">.
+            <h2>Döner</h2>
+            <p>Je nach Wunsch</p>
+            <button onclick="addToCart('Produkt 3')">In den Warenkorb</button>
+        </div>
+        
+        <div class="product">
+            <img src="nudeln-in-tomatensauce-default.jpg" height="100" width="100">.
+            <h2>Nudeln</h2>
+            <p>Nudeln in Tomatensoße</p>
+            <button onclick="addToCart('Produkt 4')">In den Warenkorb </button>
+        </div>
+        
+        <div class="product">
+            <img src="das-perfekte-steak-default.jpg" height="100" width="100">.
+            <h2>Steak</h2>
+            <p>Blue, Medium, Rare, Well, Medium Rare, Well Done.</p>
+            <button onclick="addToCart('Produkt 5')">In den Warenkorb</button>
+        </div>
+        
+        <div class="product">
+            <img src="2022_pommes-in-der-pfanne_aufmacher.jpg" height="100" width="100">.
+            <h2>Pommes</h2>
+            <p>Gesalzen</p>
+            <button onclick="addToCart('Produkt 6')">In den Warenkorb</button>
+        </div>
+        <div id="cart">
+            <h2>Einkaufswagen</h2>
+            <ul id="cart-items">
+                <!-- Hier werden die ausgewählten Produkte angezeigt -->
+            </ul>
+             <a href="warenkorb.html">Kasse</a>
+            </button>
+        </div>
+        <script>
+            // Funktion zum Hinzufügen eines Produkts zum Warenkorb
+            function addToCart(product) {
+                // Überprüfen, ob der Warenkorb bereits im lokalen Speicher existiert
+                if (localStorage.getItem("cart") === null) {
+                    // Wenn nicht, erstelle ein leeres Array und füge das Produkt hinzu
+                    var cart = [];
+                    cart.push(product);
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                } else {
+                    // Wenn der Warenkorb bereits existiert, füge das Produkt hinzu
+                    var cart = JSON.parse(localStorage.getItem("cart"));
+                    cart.push(product);
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                }
+            }
+        </script> </script>
+</body>
+</html>

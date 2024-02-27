@@ -1,0 +1,44 @@
+<html>
+<body>
+<div id="cart">
+    <h2>Einkaufswagen</h2>
+    <ul id="cart-items">
+        <!-- Hier werden die ausgewählten Produkte angezeigt -->
+    </ul>
+    <button onclick="checkout()">Kasse</button>
+</div>
+</div>
+
+<script>
+    // Funktion zum Anzeigen des Warenkorbs
+    function showCart() {
+        var cartItems = document.getElementById("cart-items");
+        
+        // Überprüfen, ob der Warenkorb leer ist
+        if (localStorage.getItem("cart") === null) {
+            cartItems.innerHTML = "<li>Der Warenkorb ist leer.</li>";
+        } else {
+            // Produkte aus dem lokalen Speicher abrufen und anzeigen
+            var products = JSON.parse(localStorage.getItem("cart"));
+            cartItems.innerHTML = "";
+            for (var i = 0; i < products.length; i++) {
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(products[i]));
+                cartItems.appendChild(li);
+            }
+        }
+    }
+     // Funktion zum Auschecken
+     function checkout() {
+            // Warenkorb leeren
+            localStorage.removeItem("cart");
+            alert("Vielen Dank für Ihren Einkauf!");
+            // Zurück zur Indexseite navigieren
+            window.location.href = "index.html";
+        }
+    
+    // Warenkorb beim Laden der Seite anzeigen
+    window.onload = showCart;
+</script>
+</body>
+</html>
